@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Trading Journal</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #f5f5f5;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .box {
+      flex: 1;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .description {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>My Market Analysis</h1>
+
+<div class="container">
+
+  <!-- LEFT: ANALYSIS -->
+  <div class="box">
+    <h2>📊 Analysis & Prediction</h2>
+
+    <img src="analysis1.png" alt="Analysis">
+
+    <div class="description">
+      BTC approaching resistance. Expect breakout.<br>
+      Entry: 42,000<br>
+      Target: 45,000
+    </div>
+  </div>
+
+  <!-- RIGHT: RESULT -->
+  <div class="box">
+    <h2>📈 Result</h2>
+
+    <img src="result1.png" alt="Result">
+
+    <div class="description">
+      Price reached target successfully.<br>
+      Trade was profitable.<br>
+      Strategy worked well.
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
