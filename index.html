@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>My Trading Journal</title>
+
   <style>
     body {
       font-family: Arial;
@@ -18,10 +20,12 @@
       display: flex;
       gap: 20px;
       padding: 20px;
+      flex-wrap: wrap;
     }
 
     .box {
       flex: 1;
+      min-width: 300px;
       background: white;
       padding: 15px;
       border-radius: 10px;
@@ -37,13 +41,27 @@
       margin-top: 10px;
       font-size: 14px;
     }
+
+    .placeholder {
+      width: 100%;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eee;
+      border-radius: 8px;
+      color: #666;
+      font-style: italic;
+      text-align: center;
+    }
   </style>
 </head>
 
 <body>
 
-<h1>My Market Analysis</h1>
+<h1>📊 My Market Analysis Journal</h1>
 
+<!-- TRADE 1 -->
 <div class="container">
 
   <!-- LEFT: ANALYSIS -->
@@ -53,9 +71,9 @@
     <img src="analysis1.png" alt="Analysis">
 
     <div class="description">
-      BTC approaching resistance. Expect breakout.<br>
-      Entry: 42,000<br>
-      Target: 45,000
+      BTC approaching resistance.<br>
+      Possible breakout setup.<br>
+      Entry: 42,000 | Target: 45,000
     </div>
   </div>
 
@@ -63,13 +81,21 @@
   <div class="box">
     <h2>📈 Result</h2>
 
+    <!-- SHOW THIS FIRST -->
+    <div class="placeholder">
+      ⏳ Coming soon...<br>
+      Waiting for market result
+    </div>
+
+    <!-- LATER REPLACE WITH THIS
     <img src="result1.png" alt="Result">
 
     <div class="description">
-      Price reached target successfully.<br>
-      Trade was profitable.<br>
-      Strategy worked well.
+      ✅ Target reached.<br>
+      Trade closed in profit.
     </div>
+    -->
+
   </div>
 
 </div>
