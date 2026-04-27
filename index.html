@@ -27,14 +27,21 @@ header {
 button {
   padding: 10px 15px;
   border: none;
-  background: #333;
-  color: white;
+  background: #ccc;
+  color: black;
   cursor: pointer;
   border-radius: 5px;
 }
 
-button:hover {
-  background: #555;
+/* ACTIVE COLORS */
+.blue-active {
+  background: #007BFF;
+  color: white;
+}
+
+.orange-active {
+  background: orange;
+  color: white;
 }
 
 .section, .category {
@@ -77,6 +84,7 @@ img {
   align-items: center;
   background: #eee;
   border-radius: 8px;
+  color: #666;
 }
 </style>
 </head>
@@ -90,17 +98,17 @@ img {
 
 <!-- MAIN BUTTONS -->
 <div class="buttons">
-  <button onclick="showSection('analysis')">Analysis & Prediction</button>
-  <button onclick="showSection('result')">Result</button>
+  <button id="analysisBtn" onclick="showSection('analysis')">Analysis & Prediction</button>
+  <button id="resultBtn" onclick="showSection('result')">Result</button>
 </div>
 
 <!-- ================= ANALYSIS ================= -->
 <div id="analysis" class="section active">
 
   <div class="category-buttons">
-    <button onclick="showCategory('forex')">Forex</button>
-    <button onclick="showCategory('stock')">Stock</button>
-    <button onclick="showCategory('crypto')">Crypto</button>
+    <button class="cat-btn" onclick="showCategory('forex')">Forex</button>
+    <button class="cat-btn" onclick="showCategory('stock')">Stock</button>
+    <button class="cat-btn" onclick="showCategory('crypto')">Crypto</button>
   </div>
 
   <!-- FOREX -->
@@ -166,9 +174,9 @@ img {
 <div id="result" class="section">
 
   <div class="category-buttons">
-    <button onclick="showCategory('forex_r')">Forex</button>
-    <button onclick="showCategory('stock_r')">Stock</button>
-    <button onclick="showCategory('crypto_r')">Crypto</button>
+    <button class="cat-btn" onclick="showCategory('forex_r')">Forex</button>
+    <button class="cat-btn" onclick="showCategory('stock_r')">Stock</button>
+    <button class="cat-btn" onclick="showCategory('crypto_r')">Crypto</button>
   </div>
 
   <!-- FOREX RESULT -->
@@ -213,6 +221,23 @@ img {
 function showSection(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+
+  let analysisBtn = document.getElementById("analysisBtn");
+  let resultBtn = document.getElementById("resultBtn");
+  let catBtns = document.querySelectorAll(".cat-btn");
+
+  // RESET COLORS
+  analysisBtn.classList.remove("blue-active", "orange-active");
+  resultBtn.classList.remove("blue-active", "orange-active");
+  catBtns.forEach(btn => btn.classList.remove("blue-active", "orange-active"));
+
+  if (id === "analysis") {
+    analysisBtn.classList.add("blue-active");
+    catBtns.forEach(btn => btn.classList.add("blue-active"));
+  } else {
+    resultBtn.classList.add("orange-active");
+    catBtns.forEach(btn => btn.classList.add("orange-active"));
+  }
 }
 
 function showCategory(id) {
@@ -224,6 +249,9 @@ function showTrade(id) {
   document.querySelectorAll('.trade-view').forEach(t => t.style.display = 'none');
   document.getElementById(id).style.display = 'block';
 }
+
+/* Default state */
+showSection('analysis');
 </script>
 
 </body>
