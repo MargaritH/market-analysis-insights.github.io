@@ -99,9 +99,11 @@ img {
   <h2>Analysis & Prediction</h2>
 
   <div class="trade-list">
-    <div onclick="showTrade('btc')">EURO/USD - 22 Apr 2026</div>
+    <div onclick="showTrade('euro')">EURO/USD - 22 Apr 2026</div>
+    <div onclick="showTrade('eth')">ETH/USDC - 27 Apr 2026</div>
   </div>
 
+  <!-- EURO -->
   <div id="euro" class="trade-view" style="display:none;">
     <h3>EURO/USD</h3>
     <p>📅 22 Apr 2026</p>
@@ -112,12 +114,8 @@ img {
       Resistance test with possible pullback to Fibonacci zone before continuation.
     </p>
   </div>
-</div>
 
-    <div class="trade-list">
-    <div onclick="showTrade('btc')">ETH/USDC - 27 Apr 2026</div>
-  </div>
-
+  <!-- ETH -->
   <div id="eth" class="trade-view" style="display:none;">
     <h3>ETH/USDC</h3>
     <p>📅 27 Apr 2026</p>
@@ -125,42 +123,39 @@ img {
     <img src="analysis1.png">
 
     <p>
-      Discription for analysis.
+      Description for analysis.
     </p>
   </div>
+
 </div>
+
 <!-- RESULT SECTION -->
 <div id="result" class="section">
   <h2>Results</h2>
 
   <div class="trade-list">
-    <div onclick="showTrade('btc_result')">EURO/USD - 22 Apr 2026</div>
+    <div onclick="showTrade('euro_result')">EURO/USD - 22 Apr 2026</div>
+    <div onclick="showTrade('eth_result')">ETH/USDC - 27 Apr 2026</div>
   </div>
 
+  <!-- EURO RESULT -->
   <div id="euro_result" class="trade-view" style="display:none;">
     <h3>EURO/USD Result</h3>
 
-    <!-- If no result -->
     <div class="placeholder">
       ⏳ Coming soon...
     </div>
-  <div class="trade-list">
-    <div onclick="showTrade('btc_result')">EURO/USD - 22 Apr 2026</div>
   </div>
 
+  <!-- ETH RESULT -->
   <div id="eth_result" class="trade-view" style="display:none;">
     <h3>ETH/USDC Result</h3>
 
-    <!-- If no result -->
     <div class="placeholder">
       ⏳ Coming soon...
     </div>
-
-    <!-- WHEN READY, REPLACE WITH:
-    <img src="result1.png">
-    <p>✅ Target reached</p>
-    -->
   </div>
+
 </div>
 
 <script>
