@@ -99,11 +99,11 @@ img {
   <h2>Analysis & Prediction</h2>
 
   <div class="trade-list">
-    <div onclick="showTrade('btc')">BTC/USDT - 22 Apr 2026</div>
+    <div onclick="showTrade('btc')">EURO/USD - 22 Apr 2026</div>
   </div>
 
-  <div id="btc" class="trade-view" style="display:none;">
-    <h3>BTC/USDT</h3>
+  <div id="euro" class="trade-view" style="display:none;">
+    <h3>EURO/USD</h3>
     <p>📅 22 Apr 2026</p>
 
     <img src="analysis1.png">
@@ -114,16 +114,42 @@ img {
   </div>
 </div>
 
+    <div class="trade-list">
+    <div onclick="showTrade('btc')">ETH/USDC - 27 Apr 2026</div>
+  </div>
+
+  <div id="eth" class="trade-view" style="display:none;">
+    <h3>ETH/USDC</h3>
+    <p>📅 27 Apr 2026</p>
+
+    <img src="analysis1.png">
+
+    <p>
+      Discription for analysis.
+    </p>
+  </div>
+</div>
 <!-- RESULT SECTION -->
 <div id="result" class="section">
   <h2>Results</h2>
 
   <div class="trade-list">
-    <div onclick="showTrade('btc_result')">BTC/USDT - 22 Apr 2026</div>
+    <div onclick="showTrade('btc_result')">EURO/USD - 22 Apr 2026</div>
   </div>
 
-  <div id="btc_result" class="trade-view" style="display:none;">
-    <h3>BTC/USDT Result</h3>
+  <div id="euro_result" class="trade-view" style="display:none;">
+    <h3>EURO/USD Result</h3>
+
+    <!-- If no result -->
+    <div class="placeholder">
+      ⏳ Coming soon...
+    </div>
+  <div class="trade-list">
+    <div onclick="showTrade('btc_result')">EURO/USD - 22 Apr 2026</div>
+  </div>
+
+  <div id="eth_result" class="trade-view" style="display:none;">
+    <h3>ETH/USDC Result</h3>
 
     <!-- If no result -->
     <div class="placeholder">
