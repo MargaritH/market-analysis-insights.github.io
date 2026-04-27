@@ -17,15 +17,15 @@ header {
   background: white;
 }
 
-.buttons {
+.buttons, .category-buttons {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin: 20px;
+  margin: 15px;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: none;
   background: #333;
   color: white;
@@ -37,7 +37,7 @@ button:hover {
   background: #555;
 }
 
-.section {
+.section, .category {
   display: none;
   padding: 20px;
 }
@@ -77,7 +77,6 @@ img {
   align-items: center;
   background: #eee;
   border-radius: 8px;
-  color: #666;
 }
 </style>
 </head>
@@ -86,91 +85,144 @@ img {
 
 <header>
   <h1>📊 My Trading Journal</h1>
-  <p>I share my market analysis and compare predictions with real results.</p>
+  <p>Analysis vs Real Results</p>
 </header>
 
+<!-- MAIN BUTTONS -->
 <div class="buttons">
   <button onclick="showSection('analysis')">Analysis & Prediction</button>
   <button onclick="showSection('result')">Result</button>
 </div>
 
-<!-- ANALYSIS SECTION -->
+<!-- ================= ANALYSIS ================= -->
 <div id="analysis" class="section active">
-  <h2>Analysis & Prediction</h2>
 
-  <div class="trade-list">
-    <div onclick="showTrade('euro')">EURO/USD - 22 Apr 2026</div>
-    <div onclick="showTrade('eth')">ETH/USDC - 27 Apr 2026</div>
+  <div class="category-buttons">
+    <button onclick="showCategory('forex')">Forex</button>
+    <button onclick="showCategory('stock')">Stock</button>
+    <button onclick="showCategory('crypto')">Crypto</button>
   </div>
 
-  <!-- EURO -->
-  <div id="euro" class="trade-view" style="display:none;">
-    <h3>EURO/USD</h3>
-    <p>📅 22 Apr 2026</p>
+  <!-- FOREX -->
+  <div id="forex" class="category">
+    <h3>Forex</h3>
+    <div class="trade-list">
+      <div onclick="showTrade('eurusd')">EUR/USD</div>
+      <div onclick="showTrade('jpyusd')">JPY/USD</div>
+    </div>
 
-    <img src="analysis1.png">
+    <div id="eurusd" class="trade-view" style="display:none;">
+      <img src="analysis1.png">
+      <p>EUR/USD analysis description</p>
+    </div>
 
-    <p>
-      Resistance test with possible pullback to Fibonacci zone before continuation.
-    </p>
+    <div id="jpyusd" class="trade-view" style="display:none;">
+      <img src="analysis1.png">
+      <p>JPY/USD analysis</p>
+    </div>
   </div>
 
-  <!-- ETH -->
-  <div id="eth" class="trade-view" style="display:none;">
-    <h3>ETH/USDC</h3>
-    <p>📅 27 Apr 2026</p>
+  <!-- STOCK -->
+  <div id="stock" class="category">
+    <h3>Stock</h3>
+    <div class="trade-list">
+      <div onclick="showTrade('aapl')">AAPL</div>
+      <div onclick="showTrade('gold')">Gold</div>
+    </div>
 
-    <img src="analysis1.png">
+    <div id="aapl" class="trade-view" style="display:none;">
+      <img src="analysis1.png">
+      <p>AAPL analysis</p>
+    </div>
 
-    <p>
-      Description for analysis.
-    </p>
+    <div id="gold" class="trade-view" style="display:none;">
+      <img src="analysis1.png">
+      <p>Gold analysis</p>
+    </div>
+  </div>
+
+  <!-- CRYPTO -->
+  <div id="crypto" class="category">
+    <h3>Crypto</h3>
+    <div class="trade-list">
+      <div onclick="showTrade('eth')">ETH/USDC</div>
+      <div onclick="showTrade('ltc')">LTC/USDC</div>
+    </div>
+
+    <div id="eth" class="trade-view" style="display:none;">
+      <img src="analysis1.png">
+      <p>ETH analysis</p>
+    </div>
+
+    <div id="ltc" class="trade-view" style="display:none;">
+      <img src="analysis1.png">
+      <p>LTC analysis</p>
+    </div>
   </div>
 
 </div>
 
-<!-- RESULT SECTION -->
+<!-- ================= RESULT ================= -->
 <div id="result" class="section">
-  <h2>Results</h2>
 
-  <div class="trade-list">
-    <div onclick="showTrade('euro_result')">EURO/USD - 22 Apr 2026</div>
-    <div onclick="showTrade('eth_result')">ETH/USDC - 27 Apr 2026</div>
+  <div class="category-buttons">
+    <button onclick="showCategory('forex_r')">Forex</button>
+    <button onclick="showCategory('stock_r')">Stock</button>
+    <button onclick="showCategory('crypto_r')">Crypto</button>
   </div>
 
-  <!-- EURO RESULT -->
-  <div id="euro_result" class="trade-view" style="display:none;">
-    <h3>EURO/USD Result</h3>
+  <!-- FOREX RESULT -->
+  <div id="forex_r" class="category">
+    <h3>Forex Results</h3>
+    <div class="trade-list">
+      <div onclick="showTrade('eurusd_r')">EUR/USD</div>
+    </div>
 
-    <div class="placeholder">
-      ⏳ Coming soon...
+    <div id="eurusd_r" class="trade-view" style="display:none;">
+      <div class="placeholder">⏳ Coming soon...</div>
     </div>
   </div>
 
-  <!-- ETH RESULT -->
-  <div id="eth_result" class="trade-view" style="display:none;">
-    <h3>ETH/USDC Result</h3>
+  <!-- STOCK RESULT -->
+  <div id="stock_r" class="category">
+    <h3>Stock Results</h3>
+    <div class="trade-list">
+      <div onclick="showTrade('aapl_r')">AAPL</div>
+    </div>
 
-    <div class="placeholder">
-      ⏳ Coming soon...
+    <div id="aapl_r" class="trade-view" style="display:none;">
+      <div class="placeholder">⏳ Coming soon...</div>
+    </div>
+  </div>
+
+  <!-- CRYPTO RESULT -->
+  <div id="crypto_r" class="category">
+    <h3>Crypto Results</h3>
+    <div class="trade-list">
+      <div onclick="showTrade('eth_r')">ETH/USDC</div>
+    </div>
+
+    <div id="eth_r" class="trade-view" style="display:none;">
+      <div class="placeholder">⏳ Coming soon...</div>
     </div>
   </div>
 
 </div>
 
 <script>
-function showSection(sectionId) {
-  document.querySelectorAll('.section').forEach(sec => {
-    sec.classList.remove('active');
-  });
-  document.getElementById(sectionId).classList.add('active');
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
 
-function showTrade(tradeId) {
-  document.querySelectorAll('.trade-view').forEach(trade => {
-    trade.style.display = 'none';
-  });
-  document.getElementById(tradeId).style.display = 'block';
+function showCategory(id) {
+  document.querySelectorAll('.category').forEach(c => c.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+}
+
+function showTrade(id) {
+  document.querySelectorAll('.trade-view').forEach(t => t.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
 }
 </script>
 
