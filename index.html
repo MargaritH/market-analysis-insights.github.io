@@ -33,7 +33,7 @@ button {
   border-radius: 5px;
 }
 
-/* ACTIVE COLORS */
+/* SECTION COLORS */
 .blue-active {
   background: #007BFF;
   color: white;
@@ -42,6 +42,12 @@ button {
 .orange-active {
   background: orange;
   color: white;
+}
+
+/* SELECTED CATEGORY */
+.selected {
+  background: black !important;
+  color: white !important;
 }
 
 .section, .category {
@@ -106,9 +112,9 @@ img {
 <div id="analysis" class="section active">
 
   <div class="category-buttons">
-    <button class="cat-btn" onclick="showCategory('forex')">Forex</button>
-    <button class="cat-btn" onclick="showCategory('stock')">Stock</button>
-    <button class="cat-btn" onclick="showCategory('crypto')">Crypto</button>
+    <button class="cat-btn" onclick="showCategory('forex', this)">Forex</button>
+    <button class="cat-btn" onclick="showCategory('stock', this)">Stock</button>
+    <button class="cat-btn" onclick="showCategory('crypto', this)">Crypto</button>
   </div>
 
   <!-- FOREX -->
@@ -174,9 +180,9 @@ img {
 <div id="result" class="section">
 
   <div class="category-buttons">
-    <button class="cat-btn" onclick="showCategory('forex_r')">Forex</button>
-    <button class="cat-btn" onclick="showCategory('stock_r')">Stock</button>
-    <button class="cat-btn" onclick="showCategory('crypto_r')">Crypto</button>
+    <button class="cat-btn" onclick="showCategory('forex_r', this)">Forex</button>
+    <button class="cat-btn" onclick="showCategory('stock_r', this)">Stock</button>
+    <button class="cat-btn" onclick="showCategory('crypto_r', this)">Crypto</button>
   </div>
 
   <!-- FOREX RESULT -->
@@ -229,7 +235,9 @@ function showSection(id) {
   // RESET COLORS
   analysisBtn.classList.remove("blue-active", "orange-active");
   resultBtn.classList.remove("blue-active", "orange-active");
-  catBtns.forEach(btn => btn.classList.remove("blue-active", "orange-active"));
+  catBtns.forEach(btn => {
+    btn.classList.remove("blue-active", "orange-active", "selected");
+  });
 
   if (id === "analysis") {
     analysisBtn.classList.add("blue-active");
@@ -240,9 +248,12 @@ function showSection(id) {
   }
 }
 
-function showCategory(id) {
+function showCategory(id, btn) {
   document.querySelectorAll('.category').forEach(c => c.style.display = 'none');
   document.getElementById(id).style.display = 'block';
+
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
 }
 
 function showTrade(id) {
@@ -250,7 +261,7 @@ function showTrade(id) {
   document.getElementById(id).style.display = 'block';
 }
 
-/* Default state */
+// default state
 showSection('analysis');
 </script>
 
