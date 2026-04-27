@@ -1,130 +1,157 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>My Trading Journal</title>
+<meta charset="UTF-8">
+<title>Trading Journal</title>
 
-  <style>
-    body {
-      font-family: Arial;
-      margin: 0;
-      background: #f5f5f5;
-    }
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f5f5f5;
+}
 
-    h1 {
-      text-align: center;
-      padding: 20px;
-    }
+header {
+  text-align: center;
+  padding: 20px;
+  background: white;
+}
 
-    .container {
-      display: flex;
-      gap: 20px;
-      padding: 20px;
-      flex-wrap: wrap;
-    }
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px;
+}
 
-    .box {
-      flex: 1;
-      min-width: 300px;
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+button {
+  padding: 10px 20px;
+  border: none;
+  background: #333;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
-    img {
-      width: 100%;
-      border-radius: 8px;
-    }
+button:hover {
+  background: #555;
+}
 
-    .meta {
-      font-size: 13px;
-      color: #666;
-      margin-bottom: 8px;
-    }
+.section {
+  display: none;
+  padding: 20px;
+}
 
-    .pair {
-      font-weight: bold;
-      color: #000;
-    }
+.active {
+  display: block;
+}
 
-    .description {
-      margin-top: 10px;
-      font-size: 14px;
-    }
+.trade-list div {
+  padding: 10px;
+  background: white;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
-    .analysis-details {
-      margin-top: 10px;
-      font-size: 13px;
-      background: #fafafa;
-      padding: 10px;
-      border-radius: 6px;
-    }
+.trade-list div:hover {
+  background: #ddd;
+}
 
-    .placeholder {
-      width: 100%;
-      height: 250px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #eee;
-      border-radius: 8px;
-      color: #666;
-      font-style: italic;
-      text-align: center;
-    }
-  </style>
+.trade-view {
+  margin-top: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.placeholder {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eee;
+  border-radius: 8px;
+  color: #666;
+}
+</style>
 </head>
 
 <body>
 
-<h1>📊 My Market Analysis Journal</h1>
+<header>
+  <h1>📊 My Trading Journal</h1>
+  <p>I share my market analysis and compare predictions with real results.</p>
+</header>
 
-<!-- TRADE 1 -->
-<div class="container">
+<div class="buttons">
+  <button onclick="showSection('analysis')">Analysis & Prediction</button>
+  <button onclick="showSection('result')">Result</button>
+</div>
 
-  <!-- LEFT: ANALYSIS -->
-  <div class="box">
-    <h2>📊 Analysis & Prediction</h2>
+<!-- ANALYSIS SECTION -->
+<div id="analysis" class="section active">
+  <h2>Analysis & Prediction</h2>
 
-    <div class="meta">
-      📅 2026-04-22 | Pair: <span class="pair">Euro/USD</span>
-    </div>
-
-    <img src="analysis1.png" alt="Analysis">
-
-    <div class="description">
-      Euro approaching Take-Profit.<br>
-      Entry: 1.1757<br>
-      Target: 
-    </div>
-
-    <div class="analysis-details">
-      Market is reacting at resistance with POC above acting as a magnet.
-Possible retracement to 50–61.8% Fibonacci zone, then continuation to upside.
-    </div>
+  <div class="trade-list">
+    <div onclick="showTrade('btc')">BTC/USDT - 22 Apr 2026</div>
   </div>
 
-  <!-- RIGHT: RESULT -->
-  <div class="box">
-    <h2>📈 Result</h2>
+  <div id="btc" class="trade-view" style="display:none;">
+    <h3>BTC/USDT</h3>
+    <p>📅 22 Apr 2026</p>
 
+    <img src="analysis1.png">
+
+    <p>
+      Resistance test with possible pullback to Fibonacci zone before continuation.
+    </p>
+  </div>
+</div>
+
+<!-- RESULT SECTION -->
+<div id="result" class="section">
+  <h2>Results</h2>
+
+  <div class="trade-list">
+    <div onclick="showTrade('btc_result')">BTC/USDT - 22 Apr 2026</div>
+  </div>
+
+  <div id="btc_result" class="trade-view" style="display:none;">
+    <h3>BTC/USDT Result</h3>
+
+    <!-- If no result -->
     <div class="placeholder">
-      ⏳ Coming soon...<br>
-      Waiting for market result
+      ⏳ Coming soon...
     </div>
 
-    <!-- LATER REPLACE WITH THIS
-    <img src="result1.png" alt="Result">
-
-    <div class="description">
-      ✅ Target reached.<br>
-      Trade closed in profit.
-    </div>
+    <!-- WHEN READY, REPLACE WITH:
+    <img src="result1.png">
+    <p>✅ Target reached</p>
     -->
   </div>
-
 </div>
+
+<script>
+function showSection(sectionId) {
+  document.querySelectorAll('.section').forEach(sec => {
+    sec.classList.remove('active');
+  });
+  document.getElementById(sectionId).classList.add('active');
+}
+
+function showTrade(tradeId) {
+  document.querySelectorAll('.trade-view').forEach(trade => {
+    trade.style.display = 'none';
+  });
+  document.getElementById(tradeId).style.display = 'block';
+}
+</script>
 
 </body>
 </html>
